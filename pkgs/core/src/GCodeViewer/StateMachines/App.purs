@@ -18,16 +18,21 @@ import Data.Codec.Argonaut as CA
 import Data.Codec.Argonaut.Record as CAR
 import Data.Lens (set)
 import Data.Newtype (class Newtype)
+import Effect.Class.Console (logShow)
 import Effect.Uncurried (EffectFn1, mkEffectFn1)
 import GCodeViewer.Api (IndexFile, codecIndexFile)
 import GCodeViewer.Api as Api
 import GCodeViewer.Error (Err, printErr)
 import GCodeViewer.RemoteData (RemoteData(..), codecRemoteData)
 import GCodeViewer.TsBridge (class TsBridge, Tok(..))
+import Routing.Duplex (RouteDuplex, RouteDuplex', (:=))
+import Routing.Duplex as RD
+import Routing.Duplex as RoutingDuplex
 import Stadium.Core (DispatcherApi, TsApi, mkTsApi)
 import Stadium.React (useStateMachine)
 import Stadium.TL (mkConstructors)
 import TsBridge as TSB
+import Type.Prelude (Proxy(..))
 
 type PubState =
   { index :: RemoteData IndexFile
@@ -71,6 +76,10 @@ dispatchers { emitMsg, emitMsgCtx, readPubState } =
       pure unit
     else
       ( do
+          let r = RD.parse rdQuery "?url=ffo&debug=true"
+
+          logShow r
+
           liftEffect $ emitMsg $ MsgSetIndex Loading
           index <- Api.getIndexFile { url }
           liftEffect $ emitMsg $ MsgSetIndex (Loaded index)
@@ -120,3 +129,17 @@ tsExports = TSB.tsModuleFile moduleName
       , mkMsg: mkConstructors @Msg
       }
   ]
+
+--
+
+type Query =
+  { url :: String
+  , debug :: Boolean
+  }
+
+rdQuery :: RouteDuplex' Query
+rdQuery =
+  RD.params
+    { url: RD.string
+    , debug: RD.boolean
+    }

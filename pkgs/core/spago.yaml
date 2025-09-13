@@ -14,6 +14,8 @@ package:
       - record
       - heterogeneous
       - stadium
+      - routing-duplex
+      - routing
 
 workspace:
   packageSet:
