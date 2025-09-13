@@ -7,17 +7,7 @@ import { mkRemoteData, onRemoteData, RemoteData } from 'core/GCodeViewer/RemoteD
 import { IndexFileItem } from 'core/TypeAliases';
 import { useEffectEq } from 'core/react-utils';
 
-// const useEffectEq = <A,>(cb: () => () => void, eq: (a: A, b: A) => boolean, dep: A) => {
-//   const prevCount = useRef(0)
-//   const prevDep = useRef(dep)
 
-//   prevDep.current = dep
-//   prevCount.current = eq(prevDep.current, dep) ? prevCount.current : prevCount.current + 1
-
-//   return useEffect(() => {
-//     return cb()
-//   }, [prevCount.current])
-// }
 
 
 const eqString = (a: string, b: string) => a === b
