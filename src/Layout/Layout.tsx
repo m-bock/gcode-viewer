@@ -1,5 +1,6 @@
 import React from 'react';
 import *as pkgJson from '../../package.json';
+import * as styles from './Layout.module.css';
 
 type Props = {
     children?: React.ReactNode,
@@ -9,10 +10,10 @@ type Props = {
 
 export const Layout: React.FC<Props> = ({ children, viewErrors, viewInfo }) => {
     return (
-        <div>
+        <div className={styles.root}>
             <div>{children}</div>
             <div>{viewErrors}</div>
             <div>{viewInfo}</div>
-            <div>{pkgJson.version}</div>
+            <div className={styles.version}>{pkgJson.version}</div>
         </div>)
 }

@@ -12,6 +12,9 @@ import { Viewer } from './Viewer';
 import { PicturesViewer } from './PicturesViewer';
 import { GCodeViewer } from './GCodeViewer';
 
+import './index.css';
+
+
 
 
 const eqString = (a: string, b: string) => a === b

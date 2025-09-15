@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import * as GCodePreview from 'gcode-preview';
+import styles from './GCodeViewer.module.css';
 
 export const GCodeViewer: React.FC<{ gcode: string[] }> = ({ gcode }) => {
 
@@ -33,6 +34,6 @@ export const GCodeViewer: React.FC<{ gcode: string[] }> = ({ gcode }) => {
         }
     }, [gcode]);
 
-    return <canvas ref={canvasRef} />
+    return <canvas ref={canvasRef} className={styles.canvas} />
 }
 

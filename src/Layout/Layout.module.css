@@ -1,0 +1,17 @@
+.root {
+    background-color: #1d1f22;
+}
+
+.version {
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    background-color: #081f36;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #94a6b9;
+}
