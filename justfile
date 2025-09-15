@@ -13,5 +13,6 @@ view:
 deploy:
     #!/usr/bin/env bash
     set -e
+    npm ci
     just build
     npx gh-pages -d dist
