@@ -2,7 +2,7 @@ dev:
     npx vite
 
 build:
-    npx vite build
+    npx vite build --base gcode-viewer
 
 preview:
     npx vite preview

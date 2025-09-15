@@ -1,7 +1,7 @@
 {
   "name": "gcode-viewer",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/releases/m-bock-gcode-viewer-core-0.0.9.tgz",
+    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/releases/m-bock-gcode-viewer-core-0.0.10.tgz",
     "@radix-ui/colors": "^3.0.0",
     "gcode-preview": "^2.18.0",
     "radix-ui": "^1.4.3",
