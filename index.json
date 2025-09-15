@@ -1,7 +1,32 @@
 [
   {
-    "name": "Sample",
-    "gcode": "/sample.gcode",
+    "name": "Sample1",
+    "gcode": "/sample1.gcode",
+    "pictures": []
+  },
+  {
+    "name": "Sample2",
+    "gcode": "/sample2.gcode",
+    "pictures": []
+  },
+  {
+    "name": "Sample2",
+    "gcode": "/sample2.gcode",
+    "pictures": []
+  },
+  {
+    "name": "Sample2",
+    "gcode": "/sample2.gcode",
+    "pictures": []
+  },
+  {
+    "name": "Sample2",
+    "gcode": "/sample2.gcode",
+    "pictures": []
+  },
+  {
+    "name": "Sample2",
+    "gcode": "/sample2.gcode",
     "pictures": []
   }
 ]
