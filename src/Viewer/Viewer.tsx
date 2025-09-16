@@ -10,8 +10,9 @@ type Props = {
     viewSlider: ReactNode
 }
 
-export const Viewer: React.FC<Props> = ({ viewPictures, viewGcode, viewSlider }) => {
+export const Viewer: React.FC<Props> = ({ viewPictures, viewGcode, viewSlider, item }) => {
     return (<div className={styles.root}>
+        <div className={styles.label}>{item.name}</div>
         {viewPictures}
         {viewGcode}
         <div className={styles.slider}>
