@@ -22,7 +22,10 @@ const eqString = (a: string, b: string) => a === b
 
 const App3: React.FC<{ data: IndexFileItem }> = ({ data }) => {
 
-  const { state, dispatch } = useViewer()
+  const { state, dispatch } = useViewer({
+    startLayer: trunc(0),
+    endLayer: trunc(50)
+  })
 
   useEffectEq(() => {
     console.log("useEffectEq", data.gcode)

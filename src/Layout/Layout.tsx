@@ -1,5 +1,6 @@
 import React from 'react';
-import *as pkgJson from '../../package.json';
+import * as pkgJson from '../../package.json';
+import * as corePkgJson from '@m-bock/gcode-viewer-core/package.json';
 import * as styles from './Layout.module.css';
 
 type Props = {
@@ -14,6 +15,6 @@ export const Layout: React.FC<Props> = ({ children, viewErrors, viewInfo }) => {
             <div>{children}</div>
             <div>{viewErrors}</div>
             <div>{viewInfo}</div>
-            <div className={styles.version}>{pkgJson.version}</div>
+            <div className={styles.version}>{pkgJson.version} - {corePkgJson.version}</div>
         </div>)
 }
