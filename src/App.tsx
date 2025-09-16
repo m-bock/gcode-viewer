@@ -13,6 +13,7 @@ import { PicturesViewer } from './PicturesViewer';
 import { GCodeViewer } from './GCodeViewer';
 
 import './index.css';
+import { Slider } from './Slider';
 
 
 
@@ -34,14 +35,25 @@ const App3: React.FC<{ data: IndexFileItem }> = ({ data }) => {
 
   return (
     <Viewer
-      viewPictures={<PicturesViewer pictures={data.pictures} />}
-      viewGcode={<GCodeViewer gcode={onRemoteData(state.gcodeLines, {
-        NotAsked: () => [],
-        Loading: () => [],
-        Loaded: (data) => data,
-        Error: (err) => []
-      })} />}
-      item={data} />
+      viewPictures={
+        <PicturesViewer
+          pictures={data.pictures} />}
+      viewGcode={
+        <GCodeViewer
+          gcode={onRemoteData(state.gcodeLines, {
+            NotAsked: () => [],
+            Loading: () => [],
+            Loaded: (data) => data,
+            Error: (err) => []
+          })}
+          endLayer={toNumber(state.endLayer)}
+        />}
+      item={data}
+      viewSlider={
+        <Slider
+          value={toNumber(state.endLayer)}
+          onChange={(value) => { dispatch.emitSetEndLayer(trunc(value)) }} />}
+    />
   )
 }
 
