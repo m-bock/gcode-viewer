@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import * as GCodePreview from 'gcode-preview';
 import { useViewer } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer"
-import { mkMsg, useStateMachineApp, getQueryParams } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
+import { mkMsg, useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
 import { trunc, toNumber } from "@m-bock/gcode-viewer-core/Data/Int";
 import { mkRemoteData, onRemoteData, RemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
@@ -20,7 +20,7 @@ import { Slider } from './Slider';
 
 const eqString = (a: string, b: string) => a === b
 
-const App3: React.FC<{ data: IndexFileItem }> = ({ data }) => {
+const App3: React.FC<{ url: string, data: IndexFileItem }> = ({ url, data }) => {
 
   const { state, dispatch } = useViewer({
     startLayer: trunc(0),
@@ -29,7 +29,7 @@ const App3: React.FC<{ data: IndexFileItem }> = ({ data }) => {
 
   useEffectEq(() => {
     console.log("useEffectEq", data.gcode)
-    dispatch.runLoadGcodeLines({ url: data.gcode })
+    dispatch.runLoadGcodeLines({ url: mkUrl({ absUrl: url, relUrl: data.gcode }) })
 
     return () => {
       console.log("cleanup")
@@ -83,7 +83,7 @@ const App: React.FC = () => {
         <Layout viewInfo={<>Loading</>} />,
       Loaded: (data) =>
         <Layout>
-          <CollectionViewer items={data.map((item) => <App3 data={item} />)} />
+          <CollectionViewer items={data.content.map((item) => <App3 url={data.url} data={item} />)} />
         </Layout>,
       Error: (err) =>
         <Layout viewErrors={<>{"Error: " + err}</>} />
