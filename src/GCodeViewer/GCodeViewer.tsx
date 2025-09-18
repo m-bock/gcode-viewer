@@ -6,12 +6,14 @@ import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
 
 type Props = {
     gcode: string[],
-    endLayer: number
+    endLayer: number,
+    onMaxLayerIndex: (maxLayerIndex: number) => void
 }
 
-export const GCodeViewer: React.FC<Props> = ({ gcode, endLayer }) => {
+export const GCodeViewer: React.FC<Props> = ({ gcode, endLayer, onMaxLayerIndex }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const webglRef = useRef<{ webgl: WebGLPreview | null }>({ webgl: null });
+
 
     useEffect(() => {
         if (canvasRef.current && !webglRef.current.webgl) {
@@ -23,7 +25,7 @@ export const GCodeViewer: React.FC<Props> = ({ gcode, endLayer }) => {
                 renderExtrusion: true,
                 renderTubes: false,
                 startLayer: 0,
-                endLayer: 100,
+                endLayer,
                 backgroundColor: 'black',
                 buildVolume: {
                     x: 220,
@@ -32,14 +34,21 @@ export const GCodeViewer: React.FC<Props> = ({ gcode, endLayer }) => {
                 },
             });
 
+            webglRef.current.webgl.clear();
             webglRef.current.webgl.processGCode(gcode);
+            onMaxLayerIndex(webglRef.current.webgl.layers.length);
+
             webglRef.current.webgl.render()
         }
     }, []);
 
     useEffect(() => {
         if (canvasRef.current && webglRef.current.webgl) {
+
+            webglRef.current.webgl.clear();
             webglRef.current.webgl.processGCode(gcode);
+            onMaxLayerIndex(webglRef.current.webgl.layers.length);
+            webglRef.current.webgl.render()
         }
     }, [gcode]);
 

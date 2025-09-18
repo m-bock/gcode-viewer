@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import * as GCodePreview from 'gcode-preview';
-import { useViewer } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer"
+import { useStateMachineViewer } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer"
 import { mkMsg, useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
+import * as SMA from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
+import * as SMV from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer"
 import { trunc, toNumber } from "@m-bock/gcode-viewer-core/Data/Int";
 import { mkRemoteData, onRemoteData, RemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
@@ -22,14 +24,11 @@ const eqString = (a: string, b: string) => a === b
 
 const App3: React.FC<{ url: string, data: IndexFileItem }> = ({ url, data }) => {
 
-  const { state, dispatch } = useViewer({
-    startLayer: trunc(0),
-    endLayer: trunc(50)
-  })
+  const { state, dispatch } = useStateMachineViewer()
 
   useEffectEq(() => {
-    console.log("useEffectEq", data.gcode)
     dispatch.runLoadGcodeLines({ url: mkUrl({ absUrl: url, relUrl: data.gcode }) })
+
 
     return () => {
       console.log("cleanup")
@@ -50,12 +49,16 @@ const App3: React.FC<{ url: string, data: IndexFileItem }> = ({ url, data }) => 
             Error: (err) => []
           })}
           endLayer={toNumber(state.endLayer)}
+          onMaxLayerIndex={(maxLayerIndex) => { dispatch.msg(SMV.mkMsg.MsgSetMaxLayer(trunc(maxLayerIndex))) }}
         />}
       item={data}
       viewSlider={
         <Slider
           value={toNumber(state.endLayer)}
-          onChange={(value) => { dispatch.emitSetEndLayer(trunc(value)) }} />}
+          onChange={([s]) => { dispatch.emitSetEndLayer(trunc(s)) }}
+          min={toNumber(state.minLayer)}
+          max={toNumber(state.maxLayer)}
+        />}
     />
   )
 }

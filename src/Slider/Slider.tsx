@@ -5,7 +5,9 @@ import styles from './Slider.module.css';
 
 interface SliderProps {
     value: number;
-    onChange: (value: number) => void;
+    onChange: (value: number[]) => void;
+    min: number;
+    max: number;
 }
 
 export const Slider: React.FC<SliderProps> = (props) => {
@@ -15,7 +17,8 @@ export const Slider: React.FC<SliderProps> = (props) => {
             className={styles.Root}
             orientation="vertical"
             defaultValue={[props.value]}
-            max={100}
+            max={props.max}
+            min={props.min}
             step={1}>
             <RadixSlider.Track className={styles.Track}>
                 <RadixSlider.Range className={styles.Range} />

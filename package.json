@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/releases/m-bock-gcode-viewer-core-0.0.15.tgz",
+    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/releases/m-bock-gcode-viewer-core-0.0.16.tgz",
     "@radix-ui/colors": "^3.0.0",
     "gcode-preview": "^2.18.0",
     "radix-ui": "^1.4.3",
