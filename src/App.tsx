@@ -4,20 +4,21 @@ import { useStateMachineViewer } from "@m-bock/gcode-viewer-core/GCodeViewer/Sta
 import { mkMsg, useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
 import * as SMA from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
 import * as SMV from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer"
-import { trunc, toNumber } from "@m-bock/gcode-viewer-core/Data/Int";
+import { trunc, toNumber } from "@m-bock/gcode-viewer-core/Extra/Data/Int";
 import { mkRemoteData, onRemoteData, RemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
 import { IndexFileItem } from '@m-bock/gcode-viewer-core/GCodeViewer/Api';
 import { Layout } from './Layout';
 import { CollectionViewer } from './CollectionViewer';
-import { Viewer } from './Viewer';
 import { PicturesViewer } from './PicturesViewer';
-import { GCodeViewer } from './GCodeViewer';
-
 import './index.css';
 import { Slider } from './Slider';
 import { LayerCountBox } from './LayerCountBox';
 import { Ticks } from './Ticks';
+import { Viewer } from './Viewer';
+import { GCodeViewer2 } from './GcodeViewer2';
+import { GCodeViewer } from './GCodeViewer';
+
 
 
 
@@ -91,12 +92,14 @@ const App: React.FC = () => {
         <Layout viewInfo={<>Loading</>} />,
       Loaded: (data) =>
         <Layout>
-          <CollectionViewer items={data.content.map((item) => <App3 url={data.url} data={item} />)} />
+          <CollectionViewer items={data.content.map((item) => <GCodeViewer2 data={item} url={data.url} />)} />
         </Layout>,
       Error: (err) =>
         <Layout viewErrors={<>{"Error: " + err}</>} />
     })
   )
 }
+
+// <App3 url={data.url} data={item} />
 
 export default App;
