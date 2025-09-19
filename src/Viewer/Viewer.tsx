@@ -8,17 +8,18 @@ type Props = {
     viewPictures: ReactNode,
     viewGcode: ReactNode,
     item: IndexFileItem,
-    viewSlider: ReactNode
+    viewSlider: ReactNode,
+    children: ReactNode
 }
 
-export const Viewer: React.FC<Props> = ({ viewPictures, viewGcode, viewSlider, item }) => {
+export const Viewer: React.FC<Props> = ({ viewPictures, viewGcode, viewSlider, item, children }) => {
     return (<div className={styles.root}>
+        {children}
+
         <div className={styles.label}>{item.name}</div>
         {viewPictures}
         {viewGcode}
-        <div className={styles.ticks}>
-            <Ticks min={0} max={100} step={10} />
-        </div>
+
         <div className={styles.slider}>
             {viewSlider}
         </div>

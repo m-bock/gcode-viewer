@@ -16,6 +16,8 @@ import { GCodeViewer } from './GCodeViewer';
 
 import './index.css';
 import { Slider } from './Slider';
+import { LayerCountBox } from './LayerCountBox';
+import { Ticks } from './Ticks';
 
 
 
@@ -59,7 +61,10 @@ const App3: React.FC<{ url: string, data: IndexFileItem }> = ({ url, data }) => 
           min={toNumber(state.minLayer)}
           max={toNumber(state.maxLayer)}
         />}
-    />
+    >
+      <LayerCountBox currentLayer={toNumber(state.endLayer)} totalLayers={toNumber(state.maxLayer)} />
+      <Ticks min={toNumber(state.minLayer)} max={toNumber(state.maxLayer)} step={5} />
+    </Viewer>
   )
 }
 

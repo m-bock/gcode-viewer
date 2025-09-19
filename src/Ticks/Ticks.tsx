@@ -20,17 +20,24 @@ type Props = {
 
 
 const getTicks = (min: number, max: number, step: number): number[] => {
-    return Array.from({ length: (max - min) / step }, (_, i) => min + i * step);
+    const ticks = [];
+    for (let i = min; i <= max; i += step) {
+        ticks.push(i);
+    }
+    return ticks;
 }
 
 export const Ticks: React.FC<Props> = ({ min, max, step }) => {
     return (
         <div className={styles.root}>
             <div className={styles.anchor}>
-                {getTicks(min, max, step).map((tick) => (
-                    <Tick key={tick} bottom={tick}>
-                    </Tick>
-                ))}
+                {getTicks(min, max, step).map((tick) => {
+                    const pct = (tick - min) / (max - min);
+                    return (
+                        <Tick key={tick} bottom={pct * 100}>
+                        </Tick>
+                    )
+                })}
             </div>
         </div>
     );
