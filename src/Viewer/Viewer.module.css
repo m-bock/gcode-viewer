@@ -19,6 +19,14 @@
     padding: 10px;
 }
 
+.ticks {
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    right: 40px;
+    width: 10px;
+}
+
 .label {
     position: absolute;
     top: 0;
