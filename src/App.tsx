@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App"
-import { onRemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
+import { useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-core/StateMachines/App"
+import { onRemoteData } from '@m-bock/gcode-viewer-core/RemoteData';
 import { Layout } from './Components/Layout';
 import './index.css';
 import { AppViewer } from './AppViewer';

@@ -1,10 +1,10 @@
 import React from 'react';
 import * as Viewer from './Components/Viewer';
-import { useStateMachineViewer } from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer';
+import { useStateMachineViewer } from '@m-bock/gcode-viewer-core/StateMachines/Viewer';
 import { trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
 import { eqString } from '@m-bock/gcode-viewer-core/Extra/Data/String';
-import { onRemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
+import { onRemoteData } from '@m-bock/gcode-viewer-core/RemoteData';
 
 
 type Props = {
