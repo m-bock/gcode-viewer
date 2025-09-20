@@ -92,7 +92,10 @@ const App: React.FC = () => {
         <Layout viewInfo={<>Loading</>} />,
       Loaded: (data) =>
         <Layout>
-          <CollectionViewer items={data.content.map((item) => <GCodeViewer2 data={item} url={data.url} />)} />
+          <CollectionViewer items={data.content.map((item) => <GCodeViewer2
+            fileName={item.name}
+            gcodeUrl={mkUrl({ absUrl: data.url, relUrl: item.gcode })}
+            pictures={item.pictures} />)} />
         </Layout>,
       Error: (err) =>
         <Layout viewErrors={<>{"Error: " + err}</>} />

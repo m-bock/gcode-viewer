@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Slider as RadixSlider } from 'radix-ui';
 import { Int } from '@m-bock/gcode-viewer-core/Prim';
 import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
+
 const StyledRoot = styled.div`
     position: absolute;
     top: 16px;
