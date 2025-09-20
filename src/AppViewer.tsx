@@ -19,7 +19,7 @@ export const AppViewer: React.FC<Props> = ({
     const { state, dispatch } = useStateMachineViewer()
 
     useEffectEq(() => {
-        const { cancel } = dispatch.runLoadGcodeLines({ url: gcodeUrl })
+        const { cancel } = dispatch.runLoadGcodeLines({ url: gcodeUrl, interval: 10_000 })
 
         return () => {
             console.log("cleanup")
@@ -27,17 +27,10 @@ export const AppViewer: React.FC<Props> = ({
         }
     }, eqString, gcodeUrl)
 
-    const gcode = onRemoteData(state.gcodeLines, {
-        NotAsked: () => [],
-        Loading: () => [],
-        Loaded: (data) => data,
-        Error: (err) => []
-    })
-
     return (
         <Viewer.Root>
             <Viewer.View3D
-                gcode={gcode}
+                gcode={state.gcodeLines}
                 endLayer={state.endLayer}
                 onMaxLayerIndex={(val) => dispatch.MsgSetMaxLayer(val)} />
             <Viewer.LayerCountBox
