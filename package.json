@@ -8,7 +8,7 @@
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/v/0.0.24",
+    "@m-bock/gcode-viewer-core": "https://m-bock.github.io/gcode-viewer-core/v/0.0.25",
     "@radix-ui/colors": "^3.0.0",
     "gcode-preview": "^2.18.0",
     "radix-ui": "^1.4.3",

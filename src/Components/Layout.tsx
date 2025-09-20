@@ -36,11 +36,11 @@ const StyledVersion = styled.div`
 
 const StyledHeader = styled.div`
     color: #fff;
-    background-color: #4d502361;
+    background-color: #14141160;
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
 `
 
 const StyledContent = styled.div`

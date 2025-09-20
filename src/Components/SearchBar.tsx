@@ -7,7 +7,7 @@ type Props = {
 }
 
 const StyledRoot = styled.div`
-    
+    padding: 20px;
 `
 
 const StyledInput = styled.input`

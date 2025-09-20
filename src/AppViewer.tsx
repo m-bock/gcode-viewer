@@ -22,7 +22,7 @@ export const AppViewer: React.FC<Props> = ({
         const { cancel } = dispatch.runLoadGcodeLines({ url: gcodeUrl, interval: 10_000 })
 
         return () => {
-            console.log("cleanup")
+            console.log(`cleanup ${fileName}`)
             cancel()
         }
     }, eqString, gcodeUrl)

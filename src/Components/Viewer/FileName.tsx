@@ -35,11 +35,12 @@ const Spinner = styled.div`
 `;
 
 export const FileName: React.FC<Props> = ({ fileName, status }) => {
+    console.log(status)
     return (
         <StyledRoot>
             {onRemoteData(status, {
                 NotAsked: () => <></>,
-                Loading: () => <div>Loading</div>,
+                Loading: () => <Spinner />,
                 Loaded: (data) => <></>,
                 Error: (error) => <div>Error</div>
             })}
