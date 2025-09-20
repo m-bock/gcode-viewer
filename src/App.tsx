@@ -12,62 +12,13 @@ import { Layout } from './Layout';
 import { CollectionViewer } from './CollectionViewer';
 import { PicturesViewer } from './PicturesViewer';
 import './index.css';
-import { Slider } from './Slider';
 import { LayerCountBox } from './LayerCountBox';
-import { Ticks } from './Ticks';
 import { Viewer } from './Viewer';
 import { GCodeViewer2 } from './GcodeViewer2';
-import { GCodeViewer } from './GCodeViewer';
 
 
 
 
-
-const eqString = (a: string, b: string) => a === b
-
-const App3: React.FC<{ url: string, data: IndexFileItem }> = ({ url, data }) => {
-
-  const { state, dispatch } = useStateMachineViewer()
-
-  useEffectEq(() => {
-    dispatch.runLoadGcodeLines({ url: mkUrl({ absUrl: url, relUrl: data.gcode }) })
-
-
-    return () => {
-      console.log("cleanup")
-    }
-  }, eqString, data.gcode)
-
-  return (
-    <Viewer
-      viewPictures={
-        <PicturesViewer
-          pictures={data.pictures} />}
-      viewGcode={
-        <GCodeViewer
-          gcode={onRemoteData(state.gcodeLines, {
-            NotAsked: () => [],
-            Loading: () => [],
-            Loaded: (data) => data,
-            Error: (err) => []
-          })}
-          endLayer={toNumber(state.endLayer)}
-          onMaxLayerIndex={(maxLayerIndex) => { dispatch.msg(SMV.mkMsg.MsgSetMaxLayer(trunc(maxLayerIndex))) }}
-        />}
-      item={data}
-      viewSlider={
-        <Slider
-          value={toNumber(state.endLayer)}
-          onChange={([s]) => { dispatch.emitSetEndLayer(trunc(s)) }}
-          min={toNumber(state.minLayer)}
-          max={toNumber(state.maxLayer)}
-        />}
-    >
-      <LayerCountBox currentLayer={toNumber(state.endLayer)} totalLayers={toNumber(state.maxLayer)} />
-      <Ticks min={toNumber(state.minLayer)} max={toNumber(state.maxLayer)} step={5} />
-    </Viewer>
-  )
-}
 
 
 
