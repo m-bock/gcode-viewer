@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+
+type Props = {
+    children: React.ReactNode[]
+}
+
 const StyledRoot = styled.div`
     display: flex;
     flex-direction: column;
@@ -9,10 +14,6 @@ const StyledRoot = styled.div`
     gap: 40px;
     padding: 20px;
 `
-
-type Props = {
-    children: React.ReactNode[]
-}
 
 export const ViewerCollection: React.FC<Props> = ({ children }) => {
     return <StyledRoot>{children}</StyledRoot>

@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+
+type Props = {
+    children: React.ReactNode;
+}
+
 const StyledRoot = styled.div`
     position: relative;
 
@@ -10,10 +15,6 @@ const StyledRoot = styled.div`
     border-radius: 5px;
     overflow: hidden;
 `
-
-type Props = {
-    children: React.ReactNode;
-}
 
 export const Root: React.FC<Props> = ({ children }) => {
     return <StyledRoot>{children}</StyledRoot>

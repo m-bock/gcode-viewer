@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Int } from '@m-bock/gcode-viewer-core/Prim';
 import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 
+
 type Props = {
     min: Int;
     max: Int;

@@ -1,8 +1,8 @@
 import React from 'react';
 import * as pkgJson from '../../package.json';
 import * as corePkgJson from '@m-bock/gcode-viewer-core/package.json';
-import * as styles from './Layout.module.css';
 import styled from '@emotion/styled';
+
 
 type Props = {
     children?: React.ReactNode,

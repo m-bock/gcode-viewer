@@ -4,6 +4,7 @@ import { Slider as RadixSlider } from 'radix-ui';
 import { Int } from '@m-bock/gcode-viewer-core/Prim';
 import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 
+
 type Props = {
     value: Int;
     onChange: (value: Int) => void;

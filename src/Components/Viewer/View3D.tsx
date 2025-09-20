@@ -6,6 +6,12 @@ import { Int } from '@m-bock/gcode-viewer-core/Prim';
 import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 
 
+type Props = {
+    gcode: string[],
+    endLayer: Int,
+    onMaxLayerIndex: (maxLayerIndex: Int) => void
+}
+
 const StyledCanvas = styled.canvas`
     position: absolute;
     top: 0;
@@ -13,13 +19,6 @@ const StyledCanvas = styled.canvas`
     width: 100%;
     height: 100%;
 `
-
-type Props = {
-    gcode: string[],
-    endLayer: Int,
-    onMaxLayerIndex: (maxLayerIndex: Int) => void
-}
-
 
 export const View3D: React.FC<Props> = ({ gcode, endLayer, onMaxLayerIndex }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
