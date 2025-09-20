@@ -3,7 +3,7 @@ import { useStateMachineApp, getQueryParams, mkUrl } from "@m-bock/gcode-viewer-
 import { onRemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 import { Layout } from './Components/Layout';
 import './index.css';
-import { GCodeViewer2 } from './GcodeViewer2';
+import { AppViewer } from './AppViewer';
 import { ViewerCollection } from './Components/ViewerCollection';
 
 
@@ -29,7 +29,7 @@ const App: React.FC = () => {
         <Layout>
           <ViewerCollection>
             {data.content.map((item) =>
-              <GCodeViewer2
+              <AppViewer
                 fileName={item.name}
                 gcodeUrl={mkUrl({ absUrl: data.url, relUrl: item.gcode })}
                 pictures={item.pictures} />)

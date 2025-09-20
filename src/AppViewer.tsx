@@ -13,7 +13,7 @@ type Props = {
     pictures: string[],
 }
 
-export const GCodeViewer2: React.FC<Props> = ({
+export const AppViewer: React.FC<Props> = ({
     gcodeUrl, fileName, pictures
 }) => {
     const { state, dispatch } = useStateMachineViewer()
@@ -49,6 +49,7 @@ export const GCodeViewer2: React.FC<Props> = ({
                 min={state.minLayer}
                 max={state.maxLayer} />
             <Viewer.Ticks min={state.minLayer} max={state.maxLayer} step={trunc(5)} />
+            <Viewer.FileName fileName={fileName} />
         </Viewer.Root>
     )
 }
