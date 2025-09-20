@@ -27,14 +27,6 @@ export const AppViewer: React.FC<Props> = ({
         }
     }, eqString, gcodeUrl)
 
-    const rmp = onRemoteData(state.gcodeFile, {
-        NotAsked: () => "loading" as const,
-        Loading: () => "loading" as const,
-        Loaded: () => "loaded" as const,
-        Error: () => "error" as const
-    })
-
-
     return (
         <Viewer.Root>
             <Viewer.View3D
@@ -54,7 +46,6 @@ export const AppViewer: React.FC<Props> = ({
                 max={state.maxLayer}
                 step={trunc(5)} />
             <Viewer.FileName fileName={fileName} status={state.gcodeFile} />
-            <div style={{ color: "white", position: "absolute", top: 0, left: 0 }}>{rmp}</div>
 
         </Viewer.Root>
     )

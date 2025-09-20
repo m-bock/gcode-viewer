@@ -7,11 +7,17 @@ import styled from '@emotion/styled';
 type Props = {
     children?: React.ReactNode,
     viewErrors?: React.ReactNode,
-    viewInfo?: React.ReactNode
+    viewInfo?: React.ReactNode,
+    viewHeader?: React.ReactNode
 }
 
 const StyledRoot = styled.div`
     background-color: #1d1f22;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-content: center;
+    height: 100%;
 `
 
 const StyledVersion = styled.div`
@@ -28,12 +34,28 @@ const StyledVersion = styled.div`
     border: 1px solid #94a6b9;
 `
 
-export const Layout: React.FC<Props> = ({ children, viewErrors, viewInfo }) => {
+const StyledHeader = styled.div`
+    color: #fff;
+    background-color: #4d502361;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const StyledContent = styled.div`
+    padding: 40px;
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+`
+
+export const Layout: React.FC<Props> = ({ children, viewErrors, viewInfo, viewHeader }) => {
     return (
         <StyledRoot>
-            <div>{children}</div>
-            <div>{viewErrors}</div>
-            <div>{viewInfo}</div>
+            <StyledHeader>{viewHeader}</StyledHeader>
+            <StyledContent>{children}</StyledContent>
             <StyledVersion>{pkgJson.version} / {corePkgJson.version}</StyledVersion>
         </StyledRoot>)
 }
+
