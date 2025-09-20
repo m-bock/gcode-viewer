@@ -11,10 +11,6 @@ const App: React.FC = () => {
   const { state, dispatch } = useStateMachineApp()
 
   useEffect(() => {
-    console.log("render", state);
-  });
-
-  useEffect(() => {
     const query = getQueryParams()
     dispatch.runFetchIndex({ url: query.url })
   }, []);

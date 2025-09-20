@@ -48,7 +48,10 @@ export const AppViewer: React.FC<Props> = ({
                 onChange={(val) => dispatch.MsgSetEndLayer(val)}
                 min={state.minLayer}
                 max={state.maxLayer} />
-            <Viewer.Ticks min={state.minLayer} max={state.maxLayer} step={trunc(5)} />
+            <Viewer.Ticks
+                min={state.minLayer}
+                max={state.maxLayer}
+                step={trunc(5)} />
             <Viewer.FileName fileName={fileName} />
         </Viewer.Root>
     )
