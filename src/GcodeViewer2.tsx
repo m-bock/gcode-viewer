@@ -1,13 +1,9 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import * as Viewer from './Components/Viewer';
-import { mkMsg, useStateMachineViewer } from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer';
-import * as StateMachinesViewer from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer';
-import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
+import { useStateMachineViewer } from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/Viewer';
+import { trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
 import { eqString } from '@m-bock/gcode-viewer-core/Extra/Data/String';
-import { IndexFileItem } from '@m-bock/gcode-viewer-core/GCodeViewer/Api';
-import { mkUrl } from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App';
 import { onRemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 
 
