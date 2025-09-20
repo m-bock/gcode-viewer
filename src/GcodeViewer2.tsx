@@ -10,11 +10,6 @@ import { IndexFileItem } from '@m-bock/gcode-viewer-core/GCodeViewer/Api';
 import { mkUrl } from '@m-bock/gcode-viewer-core/GCodeViewer/StateMachines/App';
 import { onRemoteData } from '@m-bock/gcode-viewer-core/GCodeViewer/RemoteData';
 
-export const StyledRoot = styled.div`
-    border: 1px solid red;
-    width: 800px;
-    height: 600px;
-`
 
 type Props = {
     gcodeUrl: string,
@@ -44,22 +39,20 @@ export const GCodeViewer2: React.FC<Props> = ({
     })
 
     return (
-        <StyledRoot>
-            <Viewer.Root>
-                <Viewer.View3D
-                    gcode={gcode}
-                    endLayer={state.endLayer}
-                    onMaxLayerIndex={(val) => dispatch.MsgSetMaxLayer(val)} />
-                <Viewer.LayerCountBox
-                    currentLayer={state.endLayer}
-                    totalLayers={state.maxLayer} />
-                <Viewer.Slider
-                    value={state.endLayer}
-                    onChange={(val) => dispatch.MsgSetEndLayer(val)}
-                    min={state.minLayer}
-                    max={state.maxLayer} />
-                <Viewer.Ticks min={state.minLayer} max={state.maxLayer} step={trunc(5)} />
-            </Viewer.Root>
-        </StyledRoot>
+        <Viewer.Root>
+            <Viewer.View3D
+                gcode={gcode}
+                endLayer={state.endLayer}
+                onMaxLayerIndex={(val) => dispatch.MsgSetMaxLayer(val)} />
+            <Viewer.LayerCountBox
+                currentLayer={state.endLayer}
+                totalLayers={state.maxLayer} />
+            <Viewer.Slider
+                value={state.endLayer}
+                onChange={(val) => dispatch.MsgSetEndLayer(val)}
+                min={state.minLayer}
+                max={state.maxLayer} />
+            <Viewer.Ticks min={state.minLayer} max={state.maxLayer} step={trunc(5)} />
+        </Viewer.Root>
     )
 }

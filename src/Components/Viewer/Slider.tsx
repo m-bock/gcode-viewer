@@ -4,6 +4,13 @@ import { Slider as RadixSlider } from 'radix-ui';
 import { Int } from '@m-bock/gcode-viewer-core/Prim';
 import { toNumber, trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 
+type Props = {
+    value: Int;
+    onChange: (value: Int) => void;
+    min: Int;
+    max: Int;
+}
+
 const StyledRoot = styled.div`
     position: absolute;
     top: 16px;
@@ -11,13 +18,6 @@ const StyledRoot = styled.div`
     right: 16px;
     width: 16px;
 `
-
-type Props = {
-    value: Int;
-    onChange: (value: Int) => void;
-    min: Int;
-    max: Int;
-}
 
 const StyledRadixSliderRoot = styled(RadixSlider.Root)`
 	position: relative;

@@ -14,8 +14,8 @@ const StyledRoot = styled.div`
     position: absolute;
     width: 10px;
     right: 40px;
-    top: 16px;
-    bottom: 16px;
+    top: 22px;
+    bottom: 22px;
 `
 
 const StyledTick = styled.div<{ bottom: number }>`

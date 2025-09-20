@@ -3,8 +3,12 @@ import styled from '@emotion/styled';
 
 const StyledRoot = styled.div`
     position: relative;
-    width: 100%;
-    height: 100%;
+
+    border: 1px solid #887432;
+    width: 800px;
+    height: 600px;
+    border-radius: 5px;
+    overflow: hidden;
 `
 
 type Props = {
