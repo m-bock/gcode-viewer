@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useStateMachineApp, getQueryParams, mkUrl, selectFilteredFiles } from "@m-bock/gcode-viewer-core/StateMachines/App"
 import { onRemoteData } from '@m-bock/gcode-viewer-core/RemoteData';
-import { Layout } from './Components/Layout';
-import './index.css';
-import { AppViewer } from './AppViewer';
-import { ViewerCollection } from './Components/ViewerCollection';
-import { SearchBar } from './Components/SearchBar';
+import { Layout } from '../components/Layout';
+import { ViewerContainer } from './ViewerContainer';
+import { ViewerCollection } from '../components/ViewerCollection';
+import { SearchBar } from '../components/SearchBar';
 
 
-const App: React.FC = () => {
+const AppContainer: React.FC = () => {
   const { state, dispatch } = useStateMachineApp()
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const App: React.FC = () => {
               {
 
                 filteredItems.map((item) =>
-                  <AppViewer
+                  <ViewerContainer
                     key={item.name + item.gcode}
                     fileName={item.name}
                     gcodeUrl={mkUrl({ absUrl: data.url, relUrl: item.gcode })}
@@ -47,4 +46,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App;
+export default AppContainer;

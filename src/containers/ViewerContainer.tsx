@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Viewer from './Components/Viewer';
+import * as Viewer from '../components/Viewer';
 import { useStateMachineViewer } from '@m-bock/gcode-viewer-core/StateMachines/Viewer';
 import { trunc } from '@m-bock/gcode-viewer-core/Extra/Data/Int';
 import { useEffectEq } from '@m-bock/gcode-viewer-core/react-utils';
@@ -13,7 +13,7 @@ type Props = {
     pictures: string[],
 }
 
-export const AppViewer: React.FC<Props> = ({
+export const ViewerContainer: React.FC<Props> = ({
     gcodeUrl, fileName, pictures
 }) => {
     const { state, dispatch } = useStateMachineViewer()
