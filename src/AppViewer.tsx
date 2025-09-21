@@ -19,7 +19,7 @@ export const AppViewer: React.FC<Props> = ({
     const { state, dispatch } = useStateMachineViewer()
 
     useEffectEq(() => {
-        const { cancel } = dispatch.runLoadGcodeLines({ url: gcodeUrl, interval: 10_000 })
+        const { cancel } = dispatch.runLoadGcodeLines({ label: fileName, url: gcodeUrl, interval: 10_000 })
 
         return () => {
             console.log(`cleanup ${fileName}`)

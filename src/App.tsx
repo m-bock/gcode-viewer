@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const query = getQueryParams()
-    dispatch.runFetchIndex({ url: query.url })
+    dispatch.runFetchIndex({ label: "App", url: query.url })
   }, []);
 
 
@@ -33,7 +33,7 @@ const App: React.FC = () => {
 
                 filteredItems.map((item) =>
                   <AppViewer
-                    key={item.name}
+                    key={item.name + item.gcode}
                     fileName={item.name}
                     gcodeUrl={mkUrl({ absUrl: data.url, relUrl: item.gcode })}
                     pictures={item.pictures} />)
