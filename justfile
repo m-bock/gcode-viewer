@@ -13,18 +13,15 @@ install:
 deploy:
     npx gh-pages -d dist
 
-set-version-patch:
+set-patch-version:
     npm version patch
 
-set-version-minor:
+set-minor-version:
     npm version minor
 
-set-version-major:
+set-major-version:
     npm version major
 
-run-publish-minor: set-version-minor install build deploy
-
-run-publish-patch: set-version-patch install build deploy
-
 run-view: build preview
-    
+
+run-publish: install build deploy
