@@ -29,7 +29,6 @@ const AppContainer: React.FC = () => {
             viewHeader={<SearchBar value={state.filter} onSearch={(val) => dispatch.MsgSetFilter(val)} />}>
             <ViewerCollection>
               {
-
                 filteredItems.map((item) =>
                   <ViewerContainer
                     key={item.name + item.gcode}

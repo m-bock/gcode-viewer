@@ -16,7 +16,7 @@ const StyledRoot = styled.div`
     bottom: 16px;
     left: 16px;
     color: #fff;
-    opacity: 0.2;
+    opacity: 0.5;
 `
 
 export const LayerCountBox: React.FC<Props> = ({ currentLayer, totalLayers }) => {

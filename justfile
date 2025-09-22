@@ -7,20 +7,24 @@ build:
 preview:
     npx vite preview
 
-view:
-    just build && just preview
+install:
+    npm ci
 
 deploy:
-    #!/usr/bin/env bash
-    set -e
-    npm ci
-    just build
     npx gh-pages -d dist
 
-# Generate TypeScript declaration files for CSS modules
-css-dts:
-    npx tcm src --pattern "**/*.module.css"
+set-version-patch:
+    npm version patch
 
-# Watch CSS modules and generate declaration files automatically
-watch-css-dts:
-    npx tcm src --camelCase --pattern "**/*.module.css" --watch
+set-version-minor:
+    npm version minor
+
+set-version-major:
+    npm version major
+
+run-publish-minor: set-version-minor install build deploy
+
+run-publish-patch: set-version-patch install build deploy
+
+run-view: build preview
+    

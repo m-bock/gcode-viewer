@@ -35,7 +35,6 @@ const Spinner = styled.div`
 `;
 
 export const FileName: React.FC<Props> = ({ fileName, status }) => {
-    console.log(status)
     return (
         <StyledRoot>
             {onRemoteData(status, {

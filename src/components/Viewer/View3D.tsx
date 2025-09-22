@@ -33,7 +33,6 @@ export const View3D: React.FC<Props> = ({ gcode, endLayer, onMaxLayerIndex }) =>
         onMaxLayerIndex(trunc(webgl.layers.length));
 
         webgl.render()
-
     }
 
     useEffect(() => {
